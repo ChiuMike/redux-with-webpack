@@ -11,10 +11,10 @@ function App() {
     const location=useSelector(state=>state.location);
     const filter=useSelector(state=>state.filter);
     const stared=useSelector(state=>state.stared);
-
     useEffect(()=>{
-        dispatch(getWeatherStart());
+      dispatch(getWeatherStart());
     },[])
+    
     return (
     <div className="App">
       <select name="" id="" 
@@ -29,7 +29,7 @@ function App() {
       <div>
         <h4>關注城市</h4>
         {stared.map((item,key)=>{
-            return(<FocusCity item={item}/>)
+            return(<FocusCity item={item} key={item['AQI']}/>)
         })}
         
       </div>
@@ -38,7 +38,7 @@ function App() {
       {data.map((item,key)=>{
           if(item.County===filter){
             return(
-                <SelectCity item={item}/>
+                <SelectCity item={item} key={item['AQI']}/>
             )
           }
       })}
